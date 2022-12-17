@@ -7,6 +7,11 @@ const PORT = process.env.PORT || 5050;
 let data = new Date();
 const mensagemDia = require("./src/mensagemDoDia");
 app.get("/", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Request-Width, Content-Type, Accept"
+  );
   const dia = data.getDate();
   const mensagemSelecionada = mensagemDia.RetornarMensagem(dia);
   res.json({ mensagemSelecionada });
