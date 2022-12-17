@@ -3,7 +3,9 @@ let app = express();
 let calculadora = require("./src/calculadoraImc");
 let verificarStatus = require("./src/statusImc");
 let conversorMoeda = require("./src/coverterMoedas");
+let arrayEmail = require("./src/users/user")
 const PORT = process.env.PORT || 5050;
+
 let data = new Date();
 const mensagemDia = require("./src/mensagemDoDia");
 app.get("/", (req, res) => {
@@ -68,6 +70,15 @@ app.get("/temperatura", (req, res) => {
     res.status(400).json({ Erro: "Somente numeros sao perminido" });
   }
 });
+
+app.get("/user", (req, res) =>{
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Request-Width, Content-Type, Accept"
+  );
+  res.json(arrayEmail)
+})
 
 app.listen(PORT, () => {
   console.log("Servidor iniciado\n");
