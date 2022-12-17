@@ -55,14 +55,14 @@ app.get("/temperatura", (req, res) => {
     "Origin, X-Request-Width, Content-Type, Accept"
   );
   if (
-    conversorMoeda.validarApi(req.query.celsius) &&
-    conversorMoeda.validarApi(req.query.fahrenheit)
+    conversorMoeda.validarApi(req.query.cel) &&
+    conversorMoeda.validarApi(req.query.fah)
   ) {
     console.log(req.query);
-    let conversorCelsius = conversorMoeda.grauscelsius(req.query.celsius);
+    let conversorCelsius = conversorMoeda.grauscelsius(req.query.cel);
 
     let conversorFahrenheit = conversorMoeda.grausFahrenheit(
-      req.query.fahrenheit
+      req.query.fah
     );
 
     res.json({ fahrenheit: conversorCelsius, celcios: conversorFahrenheit });

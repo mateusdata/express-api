@@ -23,8 +23,6 @@ function statusPeso(imc) {
 exports.calculadoraImc = calculadoraImc;
 
 function validarParametro(paramentro) {
-  es.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Request-Width, Content-Type, Accept");
   if (isNaN(paramentro)) {
     return false;
   } else {
