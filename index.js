@@ -18,6 +18,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/imc", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Request-Width, Content-Type, Accept"
+  );
   let peso = req.query.peso;
   let altura = req.query.altura;
 
@@ -25,6 +30,11 @@ app.get("/imc", (req, res) => {
     calculadora.validarParametro(req.query.peso) &&
     calculadora.validarParametro(req.query.altura)
   ) {
+    res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Request-Width, Content-Type, Accept"
+  );
     console.log(req.query);
     let imc = calculadora.calculadoraImc(peso, altura);
     let status = verificarStatus.statusPeso(imc);
@@ -37,6 +47,11 @@ app.get("/imc", (req, res) => {
 });
 
 app.get("/temperatura", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Request-Width, Content-Type, Accept"
+  );
   if (
     conversorMoeda.validarApi(req.query.celsius) &&
     conversorMoeda.validarApi(req.query.fahrenheit)
