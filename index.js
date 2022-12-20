@@ -5,7 +5,9 @@ let verificarStatus = require("./src/statusImc");
 let conversorMoeda = require("./src/coverterMoedas");
 let arrayEmail = require("./src/users/user")
 const PORT = process.env.PORT || 5050;
-
+const consultas = require("./src/gestao hospital/consultas/consultas")
+const faturamento = require("./src/gestao hospital/faturamento/faturamento")
+const resumo  = require("./src/gestao hospital/resumo/resumo")
 let data = new Date();
 const mensagemDia = require("./src/mensagemDoDia");
 app.get("/", (req, res) => {
@@ -79,6 +81,34 @@ app.get("/user", (req, res) =>{
   );
   res.json(arrayEmail)
 })
+
+
+app.get("/api-gestao/consultas", (req, res) =>{
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Request-Width, Content-Type, Accept"
+  );
+  res.json(consultas)
+})
+
+app.get("/api-gestao/faturamento", (req, res) =>{
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Request-Width, Content-Type, Accept"
+  );
+  res.json(faturamento)
+})
+app.get("/api-gestao/resumo", (req, res) =>{
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Request-Width, Content-Type, Accept"
+  );
+  res.json(resumo)
+})
+
 
 app.listen(PORT, () => {
   console.log("Servidor iniciado\n");
